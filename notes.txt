@@ -1,0 +1,157 @@
+EPISODE-1
+
+CDN (Content Delivery Network)
+
+Definition:
+A CDN (Content Delivery Network) is a group of geographically distributed servers that deliver website content to users from the nearest server, instead of a single central server.
+
+Why CDN is used
+
+1.To increase website speed
+
+2.To reduce latency (delay)
+
+3.To reduce load on the main server
+
+4.To improve reliability and security
+
+
+How CDN works
+
+1.Content is stored on a main (origin) server
+
+2.CDN keeps cached copies of frequently used content on edge servers
+
+3.When a user requests content, it is served from the nearest CDN server
+
+4.If not available, CDN fetches it from the origin server and caches it
+
+
+1️⃣ Why do we use crossorigin in the <script> tag?
+
+When you load React from a CDN (like unpkg or cdnjs), the file is coming from another domain, not your own website.
+
+Purpose of crossorigin
+
+It tells the browser how to handle cross-origin requests
+
+It allows the browser to share error details if something goes wrong
+
+Without it, React errors may appear as “Script error” with no useful info
+
+In simple words:
+
+crossorigin helps the browser safely load React from another website and show proper error messages during development.
+
+2️⃣ Why do we use two script tags for React?
+
+React is split into two separate libraries, each with a different responsibility.
+
+🔹 First script: React
+
+This is the core React library.
+
+It handles:
+
+Components
+
+JSX conversion (conceptually)
+
+State
+
+Props
+
+Virtual DOM logic
+
+💡 Think of this as:
+
+“React = How UI should look and behave”
+
+
+🔹 Second script: ReactDOM
+
+This is the bridge between React and the browser DOM.
+
+It handles:
+
+Rendering React elements to the actual HTML page
+
+Updating the real DOM efficiently
+
+💡 Think of this as:
+
+“ReactDOM = Putting React UI into the browser”
+
+
+Why not a single file?
+
+React can be used outside the browser (mobile apps, server rendering)
+
+ReactDOM is browser-specific
+
+Separation keeps React platform independent
+
+
+3️⃣ What is React.createElement()?
+
+This is the core function of React.
+
+What it does:
+
+Creates a React element object
+
+This object represents what you want to see on the screen
+
+It does NOT create real HTML directly
+
+Important concept:
+
+React does not work with HTML — it works with JavaScript objects
+
+So React.createElement():
+
+Describes UI in object form
+
+Stores element type, attributes, and children
+
+Feeds this info into React’s rendering system
+
+💡 JSX is just a shortcut for React.createElement().
+
+
+4️⃣ What is ReactDOM.createRoot()?
+
+This is how React connects itself to the actual webpage (introduced in React 18).
+
+What it does:
+
+Creates a root container
+
+Tells React where to render your UI
+
+Enables modern features like concurrent rendering
+
+In simple terms:
+
+createRoot() creates a starting point where React controls the UI.
+
+After this:
+
+React manages everything inside that root
+
+Updates are fast and 
+
+
+5️⃣ Big Picture Summary (Interview-friendly)
+
+crossorigin → Allows safe CDN loading and better error debugging
+
+Two script tags →
+
+React = UI logic
+
+ReactDOM = Browser rendering
+
+React.createElement() → Converts UI into React objects
+
+ReactDOM.createRoot() → Connects React to the real DOM
